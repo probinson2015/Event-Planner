@@ -1,0 +1,27 @@
+<h1>Edit Your Profile</h1>
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+<%= error %>
+<% end 
+end %>
+ <%= flash[:success] %>
+<a href="/events">Events Dashboard</a>
+<a href="/sessions/destroy">Logout</a>
+<div class="col-md-5">
+<form action="/users/<%=@user.id%>" method="post" class ="form-group">
+	<input type="hidden"name="_method" value="patch">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<p>First Name: <input class = "form-control" name="user[first_name]" value="<%=@user.first_name%>"></p>
+	Last Name: <input class = "form-control" name="user[last_name]" value="<%=@user.last_name%>">
+	Email: <input class = "form-control" name="user[email]" value="<%=@user.email%>">
+	Location: <input class = "form-control" name="user[location]" value="<%=@user.location%>">
+	State: <select class = "form-control" name="user[state]" value="<%=@user.state%>">
+				<option value="WA">WA</option>
+				<option value="AR">AR</option>
+				<option value="CA">CA</option>
+		   </select>
+	Password:   ****Password should be at least 8 characters <input class="form-control" name="user[password]" type="password">
+	<p>Confirm PW: <input class="form-control" name="user[confirm_password]" type="password"></p>
+	<input class="btn btn-default" type="submit" value="Update Records">
+</form>
+</div>
