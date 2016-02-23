@@ -2,8 +2,14 @@ Rails.application.routes.draw do
  
 
   get 'events' => 'events#index'
-
   get 'events/:id' => 'events#show'
+  post 'events' => 'events#create'
+  delete 'events' => 'events#destroy'
+
+  post 'comments' => 'comments#create'
+
+  post 'attendees' => 'attendees#create'
+  delete 'attendees' => 'attendees#destroy'
 
   root 'sessions#new'
   post 'sessions' => 'sessions#create'
